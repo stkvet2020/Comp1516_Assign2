@@ -96,6 +96,10 @@ def calculate_school_stats(school_name, student_grades):
                 selected_university_records.append(selected_record)
 
             index_3 += 1
+    else:
+
+        print(f"School {school_name} does NOT exist!")
+        exit(0)
 
     # Using records from selected school to calculate stats
     course_list = []

@@ -1,5 +1,5 @@
-def get_student_grades():
-    """ Gets and returns the list of all student grades, as a list of strings """
+"""def get_student_grades():
+    Gets and returns the list of all student grades, as a list of strings
     student_grades = \
     [
         "BCIT,COMP1516,A0001000,98.5",
@@ -244,4 +244,21 @@ def get_student_grades():
         "UBC, CMPT1010, U0002220, 82.2"
     ]
 
+    return student_grades"""
+
+def get_student_grades():
+    """ Read from data.csv and return a list of strings"""
+    student_grades=[]
+    fh=open("data.csv","r")
+    csv_data= fh.readlines()
+    fh.close()
+
+    for item in csv_data:
+        item = item.strip()
+        student_grades.append(item)
+
     return student_grades
+
+
+#grades = get_student_grades_2()
+#print(grades)
