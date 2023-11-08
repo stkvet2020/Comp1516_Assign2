@@ -29,7 +29,8 @@ def main():
         num_schools = get_summary[0]
         num_courses = get_summary[1]
         num_students = get_summary[2]
-        reports.display_school_summary(num_schools, num_courses, num_students)
+        school_list = get_summary[3]
+        reports.display_school_summary(num_schools, num_courses, num_students, school_list)
         exit(0)
 
     school_name = sys.argv[2].strip()

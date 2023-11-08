@@ -1,6 +1,10 @@
 # import statistics library
 import statistics
 
+# school_grades = {  'UBC' : {99,5, 34.5 , 23.4 , .....} ,
+#                     'SFU' : {89,5 , ...} ,...}
+#school_averages = { 'UBC' : 78.6 , 'SFU' : 89.7 , 'BCIT' : 78.9 }
+
 
 
 def calculate_summary_stats(student_grades):
@@ -27,6 +31,8 @@ def calculate_summary_stats(student_grades):
     unique_university_list = []
     unique_course_list = []
     unique_student_list = []
+    school_list = []
+
     while index < len(university_list):
         if university_list[index] not in unique_university_list:
             unique_university_list.append(university_list[index])
@@ -39,10 +45,12 @@ def calculate_summary_stats(student_grades):
     num_schools = len(unique_university_list)
     num_courses = len(unique_course_list)
     num_students = len(unique_student_list)
+    unique_university_list.sort()
+    school_list = unique_university_list
 
-    return num_schools, num_courses, num_students
+    return num_schools, num_courses, num_students, school_list
 
-
+#{"A000001": {99.8, 45.6 , 78.5}, "A000002": {85.5 , .....}
 def calculate_school_stats(school_name, student_grades):
     """ Calculates statistics that summarize all schools
     :param school_name: Name of the school for which to get the statistics

@@ -1,7 +1,7 @@
 import datetime
 
 
-def display_school_summary(num_schools, num_courses, num_students):
+def display_school_summary(num_schools, num_courses, num_students, school_list):
     """ Displays a summary of the student grade data
     :param num_schools: Number of unique schools in the data
     :param num_courses: Number of unique courses in the data
@@ -10,10 +10,11 @@ def display_school_summary(num_schools, num_courses, num_students):
     # Your code here
     print("Report:          %s" % datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     print("Number Schools:  %d" % num_schools)
+    school_list_string = ','.join(school_list)
+    print("Schools:         %s" % school_list_string)
+
     print("Number Courses:  %d" % num_courses)
     print("Number Students: %d" % num_students)
-
-
 
 
 def display_school_statistics(school_name, school_exists, num_courses, num_students,
@@ -37,4 +38,3 @@ def display_school_statistics(school_name, school_exists, num_courses, num_stude
         print("Highest Grade:   %.1f%%" % max_grade)
     else:
         print("School %s does NOT exist!" % school_name)
-
