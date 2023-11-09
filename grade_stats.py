@@ -1,10 +1,11 @@
 # import statistics library
 import statistics
+import data
+
 
 # school_grades = {  'UBC' : {99,5, 34.5 , 23.4 , .....} ,
 #                     'SFU' : {89,5 , ...} ,...}
-#school_averages = { 'UBC' : 78.6 , 'SFU' : 89.7 , 'BCIT' : 78.9 }
-
+# school_averages = { 'UBC' : 78.6 , 'SFU' : 89.7 , 'BCIT' : 78.9 }
 
 
 def calculate_summary_stats(student_grades):
@@ -18,13 +19,16 @@ def calculate_summary_stats(student_grades):
     university_list = []
     course_list = []
     student_list = []
+    record_list = []
     # Split the strings
     while index < num_records:
         tokens = student_grades[index].split(",")
+        record_list.append(tokens)
         university_list.append(tokens[0])
         course_list.append(str(tokens[1]))
         student_list.append(str(tokens[2]))
         index += 1
+    print(record_list)
 
     # Create new lists based on conditionals to determine uniqueness
     index = 0
@@ -48,9 +52,49 @@ def calculate_summary_stats(student_grades):
     unique_university_list.sort()
     school_list = unique_university_list
 
-    return num_schools, num_courses, num_students, school_list
+    # Functionality to obtain summary stats on school grades
+    set_school_list = set(school_list)
+    print(set_school_list)
+    print(school_list)
 
-#{"A000001": {99.8, 45.6 , 78.5}, "A000002": {85.5 , .....}
+    grades_list = []
+    school_grades = {}
+    # Code below creates a dictionary called school_grades
+    index = 0
+    while index < len(school_list):
+        grades_list = []
+        for record in record_list:
+            if school_list[index].lower() == record[0].lower():
+                grades_list.append(float(record[3]))
+
+        if school_list[index] not in school_grades:
+            school_grades[school_list[index]] = grades_list
+        index += 1
+
+    print(school_grades)
+    # calculating school averages, school minimums and school maximums
+    school_averages_dict = {}
+    school_minimums_dict = {}
+    school_maximums_dict = {}
+    for key in school_grades:
+
+        school_average = statistics.mean(school_grades[key])
+        school_minimum = min(school_grades[key])
+        school_maximum = max(school_grades[key])
+        if key not in school_averages_dict:
+            school_averages_dict[key] = school_average
+            school_minimums_dict[key] = school_minimum
+            school_maximums_dict[key] = school_maximum
+
+
+    print(school_averages_dict)
+    print(school_minimums_dict)
+    print(school_maximums_dict)
+
+    return num_schools, num_courses, num_students, school_list, school_averages_dict, school_minimums_dict, school_maximums_dict
+
+
+# {"A000001": {99.8, 45.6 , 78.5}, "A000002": {85.5 , .....}
 def calculate_school_stats(school_name, student_grades):
     """ Calculates statistics that summarize all schools
     :param school_name: Name of the school for which to get the statistics
@@ -70,8 +114,6 @@ def calculate_school_stats(school_name, student_grades):
 
         index += 1
 
-
-
     # Get University list
     index = 0
     university_list = []
@@ -88,11 +130,9 @@ def calculate_school_stats(school_name, student_grades):
             unique_university_list.append(university_list[index_2])
         index_2 += 1
 
-
     # select records based on user input of 'school'
-    index_3 =0
+    index_3 = 0
     selected_university_records = []
-
 
     if school_name in unique_university_list:
 
@@ -146,3 +186,4 @@ def calculate_school_stats(school_name, student_grades):
     return school_exists, num_courses, num_students, average_grade, median_grade, min_grade, max_grade
 
 
+calculate_summary_stats(data.get_student_grades())
