@@ -30,7 +30,10 @@ def main():
         num_courses = get_summary[1]
         num_students = get_summary[2]
         school_list = get_summary[3]
-        reports.display_school_summary(num_schools, num_courses, num_students, school_list)
+        school_averages_dict = get_summary[4]
+        school_minimums_dict = get_summary[5]
+        school_maximums_dict = get_summary[6]
+        reports.display_school_summary(num_schools, num_courses, num_students, school_list, school_averages_dict, school_minimums_dict, school_maximums_dict  )
         exit(0)
 
     school_name = sys.argv[2].strip()
