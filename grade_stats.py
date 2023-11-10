@@ -165,6 +165,23 @@ def calculate_school_stats(school_name, student_grades):
             unique_student_list.append(student_list[index])
         index += 1
 
+    # Creating a dictionary of student grades.
+    # {"A000001": {99.8, 45.6 , 78.5}, "A000002": {85.5 , .....}
+    # Needs to go through the students (identified by student id) and append the grades
+
+    # Code below creates a dictionary called school_grades
+    individual_school_grades = {}
+    index = 0
+    while index < len(unique_student_list):
+        grades_list = []
+        for record in selected_university_records:
+            if unique_student_list[index].lower() == record[2].lower():
+                grades_list.append(float(record[3]))
+
+        if unique_student_list[index] not in individual_school_grades:
+            individual_school_grades[unique_student_list[index]] = grades_list
+        index += 1
+    print(individual_school_grades)
     num_courses = len(unique_course_list)
     courses = unique_course_list
     num_students = len(unique_student_list)
@@ -177,4 +194,6 @@ def calculate_school_stats(school_name, student_grades):
     return school_exists, num_courses, courses, num_students, average_grade, median_grade, min_grade, max_grade
 
 
-calculate_summary_stats(data.get_student_grades())
+#calculate_summary_stats(data.get_student_grades())
+school_name=input("Please enter school name")
+calculate_school_stats(school_name,data.get_student_grades())
