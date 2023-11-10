@@ -1,0 +1,17 @@
+Report:          2023-11-10 15:27:59
+Number Schools:  3
+Schools:         BCIT,SFU,UBC
+Number Courses:  6
+Number Students: 120
+School Averages:
+                 BCIT: 77.2%
+                 SFU: 78.0%
+                 UBC: 77.8%
+School Minimums:
+                 BCIT: 20.2%
+                 SFU: 26.8%
+                 UBC: 36.2%
+School Maximums:
+                 BCIT: 99.3%
+                 SFU: 99.1%
+                 UBC: 94.5%
