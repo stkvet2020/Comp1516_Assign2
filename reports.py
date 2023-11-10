@@ -1,14 +1,14 @@
 import datetime
 
 
-def display_school_summary(num_schools, num_courses, num_students, school_list,school_averages_dict, school_minimums_dict, school_maximums_dict):
+def display_school_summary(num_schools, num_courses, num_students, school_list, school_averages_dict,
+                           school_minimums_dict, school_maximums_dict):
     """ Displays a summary of the student grade data
     :param num_schools: Number of unique schools in the data
     :param num_courses: Number of unique courses in the data
     :param num_students: Number of unique students in the data """
 
     # School averages
-
 
     print("Report:          %s" % datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
     print("Number Schools:  %d" % num_schools)
@@ -18,17 +18,17 @@ def display_school_summary(num_schools, num_courses, num_students, school_list,s
     print("Number Courses:  %d" % num_courses)
     print("Number Students: %d" % num_students)
     # School averages
-    print("School averages:")
+    print("School Averages:")
     for school in school_averages_dict:
-          print("                 %s" % school + ": %d" % school_averages_dict[school] + "%")
+        print("                 %s" % school + ": %.1f%%" % school_averages_dict[school])
     # School Minimums
     print("School Minimums:")
     for school in school_minimums_dict:
-          print(f"{school}: {school_minimums_dict[school]}")
+        print("                 %s" % school + ": %.1f%%" % school_minimums_dict[school])
     # School Maximums
     print("School Maximums:")
     for school in school_maximums_dict:
-          print(f"{school}: {school_maximums_dict[school]}")
+        print("                 %s" % school + ": %.1f%%" % school_maximums_dict[school])
 
 
 def display_school_statistics(school_name, school_exists, num_courses, num_students,

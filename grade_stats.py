@@ -28,7 +28,7 @@ def calculate_summary_stats(student_grades):
         course_list.append(str(tokens[1]))
         student_list.append(str(tokens[2]))
         index += 1
-    print(record_list)
+
 
     # Create new lists based on conditionals to determine uniqueness
     index = 0
@@ -53,9 +53,7 @@ def calculate_summary_stats(student_grades):
     school_list = unique_university_list
 
     # Functionality to obtain summary stats on school grades
-    set_school_list = set(school_list)
-    print(set_school_list)
-    print(school_list)
+
 
     grades_list = []
     school_grades = {}
@@ -71,7 +69,7 @@ def calculate_summary_stats(student_grades):
             school_grades[school_list[index]] = grades_list
         index += 1
 
-    print(school_grades)
+
     # calculating school averages, school minimums and school maximums
     school_averages_dict = {}
     school_minimums_dict = {}
@@ -87,9 +85,7 @@ def calculate_summary_stats(student_grades):
             school_maximums_dict[key] = school_maximum
 
 
-    print(school_averages_dict)
-    print(school_minimums_dict)
-    print(school_maximums_dict)
+
 
     return num_schools, num_courses, num_students, school_list, school_averages_dict, school_minimums_dict, school_maximums_dict
 
