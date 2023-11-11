@@ -136,8 +136,9 @@ def calculate_school_stats(school_name, student_grades):
             index_3 += 1
     else:
 
-        print(f"School {school_name} does NOT exist!")
-        exit(0)
+        # print(f"School {school_name} does NOT exist!")
+        # exit(0)
+        school_exists = False
 
     # Using records from selected school to calculate stats
     course_list = []
@@ -165,12 +166,12 @@ def calculate_school_stats(school_name, student_grades):
             unique_student_list.append(student_list[index])
         index += 1
 
-    # Creating a dictionary of student grades.
+    # Creating a dictionary of student grades. Should look like:
     # {"A000001": {99.8, 45.6 , 78.5}, "A000002": {85.5 , .....}
     # Needs to go through the students (identified by student id) and append the grades
 
-    # Code below creates a dictionary called school_grades
-    individual_school_grades = {}
+    # Code below creates a dictionary called individual_school_grades of students
+    individual_student_school_grades_dict = {}
     index = 0
     while index < len(unique_student_list):
         grades_list = []
@@ -178,10 +179,42 @@ def calculate_school_stats(school_name, student_grades):
             if unique_student_list[index].lower() == record[2].lower():
                 grades_list.append(float(record[3]))
 
-        if unique_student_list[index] not in individual_school_grades:
-            individual_school_grades[unique_student_list[index]] = grades_list
+        if unique_student_list[index] not in individual_student_school_grades_dict:
+            individual_student_school_grades_dict[unique_student_list[index]] = grades_list
         index += 1
-    print(individual_school_grades)
+    print(individual_student_school_grades_dict)
+    # **************************************************************************************
+    # Getting the individual student grade - averages from a specific school
+    individual_student_grade_averages_dict = {}
+    # school_minimums_dict = {}
+    # school_maximums_dict = {}
+    for key in individual_student_school_grades_dict:
+
+        individual_student_grade_average = statistics.mean(individual_student_school_grades_dict[key])
+        # school_minimum = min(school_grades[key])
+        # school_maximum = max(school_grades[key])
+        if key not in individual_student_grade_averages_dict:
+            individual_student_grade_averages_dict[key] = individual_student_grade_average
+            # school_minimums_dict[key] = school_minimum
+            # school_maximums_dict[key] = school_maximum
+
+    print(individual_student_grade_averages_dict)
+
+    # ***************************************************************************************
+    # Getting the top grade of each student , where top grade is the average of the grades of all three courses
+
+    temp_var = max(individual_student_grade_averages_dict.values())
+    max_grade_list = []
+    for key, value in individual_student_grade_averages_dict.items():
+        if value == temp_var:
+            max_grade_list.append(key)
+
+    top_student = str(max_grade_list[0])
+    print("Top student : " + top_student)
+    top_grade = str(individual_student_grade_averages_dict[top_student])
+    print("Top grade is:" +  top_grade)
+
+    # ***************************************************************************************
     num_courses = len(unique_course_list)
     courses = unique_course_list
     num_students = len(unique_student_list)
@@ -194,6 +227,6 @@ def calculate_school_stats(school_name, student_grades):
     return school_exists, num_courses, courses, num_students, average_grade, median_grade, min_grade, max_grade
 
 
-#calculate_summary_stats(data.get_student_grades())
-school_name=input("Please enter school name")
-calculate_school_stats(school_name,data.get_student_grades())
+# calculate_summary_stats(data.get_student_grades())
+school_name = input("Please enter school name")
+calculate_school_stats(school_name, data.get_student_grades())
