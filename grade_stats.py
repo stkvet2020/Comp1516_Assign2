@@ -203,16 +203,27 @@ def calculate_school_stats(school_name, student_grades):
     # ***************************************************************************************
     # Getting the top grade of each student , where top grade is the average of the grades of all three courses
 
-    temp_var = max(individual_student_grade_averages_dict.values())
+    max_temp_var = max(individual_student_grade_averages_dict.values())
+    min_temp_var = min(individual_student_grade_averages_dict.values())
     max_grade_list = []
+    min_grade_list = []
     for key, value in individual_student_grade_averages_dict.items():
-        if value == temp_var:
+        if value == max_temp_var:
             max_grade_list.append(key)
+        if value == min_temp_var:
+            min_grade_list.append(key)
 
     top_student = str(max_grade_list[0])
     print("Top student : " + top_student)
     top_grade = str(individual_student_grade_averages_dict[top_student])
-    print("Top grade is:" +  top_grade)
+    print("Top grade is:" + top_grade)
+
+    bottom_student = str(min_grade_list[0])
+    print("Bottom student : "+ bottom_student)
+    bottom_grade = str(individual_student_grade_averages_dict[bottom_student])
+    print("Bottom grade is: "+ bottom_grade)
+
+    # ***************************************************************************************
 
     # ***************************************************************************************
     num_courses = len(unique_course_list)
