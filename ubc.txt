@@ -1,0 +1,11 @@
+Report:          2023-11-12 06:24:41
+School:          UBC
+Number Courses:  1
+Courses:         CMPT1010
+Number Students: 40
+Average Grade:   77.8%
+Median Grade:    82.3%
+Top Student:     U0002218
+Top Grade:       94.5%
+Bottom Student:  U0001018
+Bottom Grade:    36.2%

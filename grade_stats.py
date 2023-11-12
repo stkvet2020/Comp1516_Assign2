@@ -2,9 +2,8 @@
 import statistics
 
 
-# school_grades = {  'UBC' : {99,5, 34.5 , 23.4 , .....} ,
-#                     'SFU' : {89,5 , ...} ,...}
-# school_averages = { 'UBC' : 78.6 , 'SFU' : 89.7 , 'BCIT' : 78.9 }
+
+
 
 
 def calculate_summary_stats(student_grades):
@@ -55,6 +54,8 @@ def calculate_summary_stats(student_grades):
     grades_list = []
     school_grades = {}
     # Code below creates a dictionary called school_grades
+    # school_grades = {  'UBC' : {99,5, 34.5 , 23.4 , .....} ,
+    #                     'SFU' : {89,5 , ...} ,...}
     index = 0
     while index < len(school_list):
         grades_list = []
@@ -66,7 +67,8 @@ def calculate_summary_stats(student_grades):
             school_grades[school_list[index]] = grades_list
         index += 1
 
-    # calculating school averages, school minimums and school maximums
+    # calculating school averages, school minimums and school maximums with dictionaries
+    # school_averages = { 'UBC' : 78.6 , 'SFU' : 89.7 , 'BCIT' : 78.9 }
     school_averages_dict = {}
     school_minimums_dict = {}
     school_maximums_dict = {}
@@ -83,7 +85,7 @@ def calculate_summary_stats(student_grades):
     return num_schools, num_courses, num_students, school_list, school_averages_dict, school_minimums_dict, school_maximums_dict
 
 
-# {"A000001": {99.8, 45.6 , 78.5}, "A000002": {85.5 , .....}
+
 def calculate_school_stats(school_name, student_grades):
     """ Calculates statistics that summarize all schools
     :param school_name: Name of the school for which to get the statistics
@@ -145,8 +147,9 @@ def calculate_school_stats(school_name, student_grades):
 
             index_3 += 1
     else:
-        print(print("School %s does NOT exist!" % school_name))
-        exit(0)
+
+        return school_exists, num_courses, courses, num_students, average_grade, median_grade, top_student, top_grade, bottom_student, bottom_grade
+
     # Using records from selected school to calculate stats
     course_list = []
     student_list = []

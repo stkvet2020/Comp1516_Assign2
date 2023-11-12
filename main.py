@@ -1,5 +1,5 @@
 # Stephan Knappstein AO1208242
-# In Class Lab due   10-08-2023
+# Asignment 2 due    11-12-2023
 # Comp 1516
 
 
@@ -37,7 +37,7 @@ def main():
                                        school_minimums_dict, school_maximums_dict)
         exit(0)
 
-    school_name = sys.argv[2].strip().upper()
+    school_name = sys.argv[2].strip()
 
     if report_type.lower() == "school" and len(sys.argv) == 3:
         # get the tuple

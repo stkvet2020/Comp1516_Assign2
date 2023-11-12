@@ -1,0 +1,11 @@
+Report:          2023-11-12 06:23:58
+School:          SFU
+Number Courses:  2
+Courses:         COMP1000,MATH1400
+Number Students: 40
+Average Grade:   78.0%
+Median Grade:    85.6%
+Top Student:     S0001007
+Top Grade:       95.6%
+Bottom Student:  S0001018
+Bottom Grade:    31.5%
