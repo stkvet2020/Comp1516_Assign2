@@ -1,0 +1,11 @@
+Report:          2023-11-11 18:02:49
+School:          BCIT
+Number Courses:  3
+Schools:         COMP1516,COMM1000,MATH1305
+Number Students: 40
+Average Grade:   77.2%
+Median Grade:    85.8%
+Top Student:     A0001007
+Top Grade:       97.5%
+Bottom Student:  A0001018
+Bottom Grade:    30.3%

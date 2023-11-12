@@ -37,7 +37,7 @@ def main():
                                        school_minimums_dict, school_maximums_dict)
         exit(0)
 
-    school_name = sys.argv[2].strip()
+    school_name = sys.argv[2].strip().upper()
 
     if report_type.lower() == "school" and len(sys.argv) == 3:
         # get the tuple
@@ -48,10 +48,12 @@ def main():
         num_students = get_school_stats[3]
         average_grade = get_school_stats[4]
         median_grade = get_school_stats[5]
-        min_grade = get_school_stats[6]
-        max_grade = get_school_stats[7]
+        top_student = get_school_stats[6]
+        top_grade = get_school_stats[7]
+        bottom_student = get_school_stats[8]
+        bottom_grade = get_school_stats[9]
         reports.display_school_statistics(school_name, school_exists, num_courses, courses, num_students,
-                                          average_grade, median_grade, min_grade, max_grade)
+                                          average_grade, median_grade, top_student, top_grade, bottom_student, bottom_grade)
     elif report_type.lower() == "summary" and len(sys.argv) == 3:
         print(f"Too many arguments for the summary report.")
 

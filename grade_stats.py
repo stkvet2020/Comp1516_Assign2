@@ -1,6 +1,5 @@
 # import statistics library
 import statistics
-import data
 
 
 # school_grades = {  'UBC' : {99,5, 34.5 , 23.4 , .....} ,
@@ -92,6 +91,17 @@ def calculate_school_stats(school_name, student_grades):
     :return A tuple with the summary statistics """
 
     # Your code here
+    school_exists = False
+    num_courses = 0
+    num_students = 0
+    courses = []
+    average_grade = 0.0
+    median_grade = 0.0
+    top_student = ""
+    top_grade = 0.0
+    bottom_student = ""
+    bottom_grade = 0.0
+
     num_records = int(len(student_grades))
 
     # Setting up a list of lists containing the student data
@@ -135,11 +145,8 @@ def calculate_school_stats(school_name, student_grades):
 
             index_3 += 1
     else:
-
-        # print(f"School {school_name} does NOT exist!")
-        # exit(0)
-        school_exists = False
-
+        print(print("School %s does NOT exist!" % school_name))
+        exit(0)
     # Using records from selected school to calculate stats
     course_list = []
     student_list = []
@@ -182,23 +189,17 @@ def calculate_school_stats(school_name, student_grades):
         if unique_student_list[index] not in individual_student_school_grades_dict:
             individual_student_school_grades_dict[unique_student_list[index]] = grades_list
         index += 1
-    print(individual_student_school_grades_dict)
+
     # **************************************************************************************
     # Getting the individual student grade - averages from a specific school
     individual_student_grade_averages_dict = {}
-    # school_minimums_dict = {}
-    # school_maximums_dict = {}
+
     for key in individual_student_school_grades_dict:
 
         individual_student_grade_average = statistics.mean(individual_student_school_grades_dict[key])
-        # school_minimum = min(school_grades[key])
-        # school_maximum = max(school_grades[key])
+
         if key not in individual_student_grade_averages_dict:
             individual_student_grade_averages_dict[key] = individual_student_grade_average
-            # school_minimums_dict[key] = school_minimum
-            # school_maximums_dict[key] = school_maximum
-
-    print(individual_student_grade_averages_dict)
 
     # ***************************************************************************************
     # Getting the top grade of each student , where top grade is the average of the grades of all three courses
@@ -213,31 +214,19 @@ def calculate_school_stats(school_name, student_grades):
         if value == min_temp_var:
             min_grade_list.append(key)
 
-    top_student = str(max_grade_list[0])
-    print("Top student : " + top_student)
-    top_grade = str(individual_student_grade_averages_dict[top_student])
-    print("Top grade is:" + top_grade)
-
-    bottom_student = str(min_grade_list[0])
-    print("Bottom student : "+ bottom_student)
-    bottom_grade = str(individual_student_grade_averages_dict[bottom_student])
-    print("Bottom grade is: "+ bottom_grade)
-
     # ***************************************************************************************
+    if school_exists:
+        num_courses = len(unique_course_list)
+        courses = unique_course_list
+        num_students = len(unique_student_list)
+        # using statistics package
+        average_grade = statistics.mean(grade_list)
+        median_grade = statistics.median(grade_list)
+        # min_grade = min(grade_list)
+        # max_grade = max(grade_list)
+        top_student = str(max_grade_list[0])
+        top_grade = float(individual_student_grade_averages_dict[top_student])
+        bottom_student = str(min_grade_list[0])
+        bottom_grade = float(individual_student_grade_averages_dict[bottom_student])
 
-    # ***************************************************************************************
-    num_courses = len(unique_course_list)
-    courses = unique_course_list
-    num_students = len(unique_student_list)
-    # using statistics package
-    average_grade = statistics.mean(grade_list)
-    median_grade = statistics.median(grade_list)
-    min_grade = min(grade_list)
-    max_grade = max(grade_list)
-
-    return school_exists, num_courses, courses, num_students, average_grade, median_grade, min_grade, max_grade
-
-
-# calculate_summary_stats(data.get_student_grades())
-school_name = input("Please enter school name")
-calculate_school_stats(school_name, data.get_student_grades())
+    return school_exists, num_courses, courses, num_students, average_grade, median_grade, top_student, top_grade, bottom_student, bottom_grade
